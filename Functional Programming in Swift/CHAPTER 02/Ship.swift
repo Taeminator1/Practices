@@ -56,4 +56,14 @@ extension Ship {
         
         return targetDistance <= firingRange && targetDistance > unsafeRange && friendlyDistance > unsafeRange
     }
+    
+    // target이 공격 범위 내에 있으며, 현재 위치로부터 근접한 상황이 아니고, 적군이 아군과 근접한 상황이 아닌지 확인
+    // 함수형 프로그래밍 적용하여, canSafelyEnageShip1, 2 보다 더 선언적임
+    func canSafelyEnageShip3(target: Ship, friendly: Ship) -> Bool {
+        let rangeRegion = difference(circle(radius: firingRange), circle(radius: unsafeRange))
+        let firingRegion = shift(region: rangeRegion, offset: position)
+        let friendlyRegion = shift(region: circle(radius: unsafeRange), offset: friendly.position)
+        let resultRegion = difference(firingRegion, friendlyRegion)
+        return resultRegion(target.position)
+    }
 }
