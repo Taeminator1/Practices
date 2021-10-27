@@ -9,50 +9,14 @@ import Foundation
 import CoreImage
 import AppKit
 
-typealias Filter = (CIImage) -> CIImage
-
-func blur(radius: Double) -> Filter {
-    return { image in
-        let parameters: [String: Any] = [
-            kCIInputRadiusKey: radius,
-            kCIInputImageKey: image
-        ]
-        let filter = CIFilter(name: "CIGaussianBlur", parameters: parameters)!
-        return filter.outputImage!
-    }
-}
-
-func colorGenerator(color: NSColor) -> Filter {
-    return { _ in
-        return CIImage(color: CIColor(color: color)!)
-    }
-}
-
-func compositeSourceOver(overlay: CIImage) -> Filter {
-    return { image in
-        let parameters = [
-            kCIInputRadiusKey: image,
-            kCIInputImageKey: overlay
-        ]
-        let filter = CIFilter(name: "CIGaussianBlur", parameters: parameters)!
-        let cropRect = image.extent
-        return filter.outputImage!.cropped(to: cropRect)
-    }
-}
-
-func colorOverlay(color: NSColor) -> Filter {
-    return { image in
-        let overlay = colorGenerator(color: color)(image)
-        return compositeSourceOver(overlay: overlay)(image)
-    }
-}
-
 let url = URL(string: "http://www.objc.io/images/covers/16.jpg")!
 let image = CIImage(contentsOf: url)!
 
-
 let blurRadius = 5.0
 let overlayColor = NSColor.red.withAlphaComponent(0.2)
+
+// MARK:- xxFilter 적용
+// 따로 구조체 정의 없이 global function을 통해 필터 구현
 
 // 단계별로 property에 할당해서 최종 이미지 저장
 // 코드의 수가 길어짐
@@ -65,7 +29,7 @@ let resultImage2 = colorOverlay(color: overlayColor)(blur(radius: blurRadius)(im
 
 // 필터를 합성하는 함수를 정의
 // 함수를 새로 정의해야 하는 번거로움이 있지만, 재사용이 가능하고 직관적으로 이해할 수 있음
-func composeFilters(_ filter1: @escaping Filter, _ filter2: @escaping Filter) -> Filter {
+func composeFilters(_ filter1: @escaping xxFilter, _ filter2: @escaping xxFilter) -> xxFilter {
     return { image in filter2(filter1(image)) }
 }
 
@@ -80,9 +44,18 @@ precedencegroup myPrecedencegroup {
 }
 
 infix operator >>>: myPrecedencegroup
-func >>> (_ filter1: @escaping Filter, _ filter2: @escaping Filter) -> Filter {
+func >>> (_ filter1: @escaping xxFilter, _ filter2: @escaping xxFilter) -> xxFilter {
     return { image in filter2(filter1(image)) }
 }
 
 let myFilter4 = blur(radius: blurRadius) >>> colorOverlay(color: overlayColor)
 let resultImage4 = myFilter4(image)
+
+// MARK:- Filter 적용
+// 따로 구조체를 정의하여 필터 구현
+
+// 필터를 합성하는 함수나 연산자를 따로 정의할 필요 없이, 합성 가능
+// 3개 이상의 필터도 쉽게 합성 가능
+let myFilter5 = Filter().colorOverlay(color: overlayColor).blur(radius: blurRadius)
+let resultImage5 = myFilter5.lookup(image)
+

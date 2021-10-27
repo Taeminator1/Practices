@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		343D92282728203B009D285A /* xxRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343D92272728203B009D285A /* xxRegion.swift */; };
 		343D92322728219B009D285A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343D92312728219B009D285A /* main.swift */; };
+		3479C8FD27296348004A799A /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479C8FC27296348004A799A /* Filter.swift */; };
+		3479C90527296A33004A799A /* xxFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479C90427296A33004A799A /* xxFilter.swift */; };
 		347B98A82726BC0800CAC4CF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347B98A72726BC0800CAC4CF /* main.swift */; };
 		347B98B62726BC3900CAC4CF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347B98B52726BC3900CAC4CF /* main.swift */; };
 		347B98BD2726C0B100CAC4CF /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347B98BC2726C0B100CAC4CF /* Position.swift */; };
@@ -50,6 +52,8 @@
 		343D92272728203B009D285A /* xxRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xxRegion.swift; sourceTree = "<group>"; };
 		343D922F2728219B009D285A /* CHAPTER 03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CHAPTER 03"; sourceTree = BUILT_PRODUCTS_DIR; };
 		343D92312728219B009D285A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		3479C8FC27296348004A799A /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		3479C90427296A33004A799A /* xxFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xxFilter.swift; sourceTree = "<group>"; };
 		347B98A42726BC0800CAC4CF /* Functional Programming in Swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Functional Programming in Swift"; sourceTree = BUILT_PRODUCTS_DIR; };
 		347B98A72726BC0800CAC4CF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		347B98B32726BC3900CAC4CF /* CHAPTER 02 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CHAPTER 02"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				343D92312728219B009D285A /* main.swift */,
+				3479C8FC27296348004A799A /* Filter.swift */,
+				3479C90427296A33004A799A /* xxFilter.swift */,
 			);
 			path = "CHAPTER 03";
 			sourceTree = "<group>";
@@ -231,7 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3479C90527296A33004A799A /* xxFilter.swift in Sources */,
 				343D92322728219B009D285A /* main.swift in Sources */,
+				3479C8FD27296348004A799A /* Filter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
