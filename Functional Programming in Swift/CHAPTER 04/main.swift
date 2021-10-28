@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK:- High Order Function
 // Global function으로 정의할 수도, Array 타입을 확장할 수도 있다.
 // 확장을 이용해 정의하는 경우: 더 나은 자동완성, 명확한 이름, 종종 더 분명한 구조의 코드
 func map<Element, T>(xs: [Element], transform: (Element) -> T) -> [T] {
