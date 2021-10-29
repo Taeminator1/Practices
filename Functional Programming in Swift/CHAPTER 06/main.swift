@@ -7,47 +7,62 @@
 
 import Foundation
 
-protocol Arbitrary {
-    static func arbitrary() -> Self
-}
-
-extension Int: Arbitrary {
-    static func arbitrary() -> Int {
-        return Int(arc4random())
-    }
-}
-
 print(Int.arbitrary())
 
-extension Character: Arbitrary {
-    static func arbitrary() -> Character {
-        return Character(UnicodeScalar(Int.random(in: 65 ... 90))!)
-    }
-    
-    func smaller() -> Character? { return nil }
-}
-
-func tabulate<A>(times: Int, transform: (Int) -> A) -> [A] {
-//    return (0 ..< times).map(transform)
-    return (0 ..< times).map {
-        transform($0)
-    }
-}
-
-extension Int {
-    static func random(from: Int, to: Int) -> Int {
-        return from + (Int(arc4random()) % (to - from))
-    }
-}
-
-extension String: Arbitrary {
-    static func arbitrary() -> String {
-        let length = Int.random(in: 0 ... 40)
-        let characters = tabulate(times: length) { _ in
-            Character.arbitrary()
-        }
-        return String(characters)
-    }
-}
-
 print(String.arbitrary())
+
+
+func check1<T: Arbitrary>(numberOfIterations: Int = 100, message: String, property: (T) -> Bool) -> () {
+    for _ in 0 ..< numberOfIterations {
+        let value = T.arbitrary()
+        guard property(value) else {
+            print("\(message) doesn't hold: \(value)")
+            return
+        }
+    }
+    print("\(message) passed \(numberOfIterations) tests.")
+}
+
+check1(message: "Area should be at least 0") { (size: CGSize) in
+    size.area >= 0
+}
+
+check1(message: "Every string starts with Hello") { (s: String) in
+    s.hasPrefix("Hello")
+}
+
+
+func iterateWhile<T>(_ condition: (T) -> Bool, initialValue: T, _ next: (T) -> T?) -> T {
+    if let x = next(initialValue), condition(x) {
+        return iterateWhile(condition, initialValue: initialValue, next)
+    }
+    return initialValue
+}
+
+func check2<T: Arbitrary>(numberOfIterations: Int = 2, message: String, property: (T) -> Bool) -> () {
+    for _ in 0 ..< numberOfIterations {
+        let value = T.arbitrary()
+        guard property(value) else {
+//            let smallerValue = iterateWhile({ !property($0) }, initialValue: value) { $0.smaller() }
+            
+            var smallerValue = value
+            while let tmpValue = smallerValue.smaller() {
+                smallerValue = tmpValue
+            }
+            
+            print("\(message) doesn't hold: \(smallerValue)")
+            return
+        }
+    }
+    print("\(message) passed \(numberOfIterations) tests.")
+}
+
+check2(message: "Area should be at least 0") { (size: CGSize) in
+    size.area >= 0
+}
+
+check2(message: "Every string starts with Hello") { (s: String) in
+    s.hasPrefix("Hello")
+}
+
+check2(message: "Unsigned integer should be at least 0") { $0 >= 10000000000 }

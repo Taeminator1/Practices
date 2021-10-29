@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343A67AC272C0DA0005E6F2B /* Smaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343A67AB272C0DA0005E6F2B /* Smaller.swift */; };
+		343A67B3272C0DAE005E6F2B /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343A67B2272C0DAE005E6F2B /* Arbitrary.swift */; };
 		343D92282728203B009D285A /* xxRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343D92272728203B009D285A /* xxRegion.swift */; };
 		343D92322728219B009D285A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343D92312728219B009D285A /* main.swift */; };
 		345463E0272AD2690014083B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345463DF272AD2690014083B /* main.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		343A67AB272C0DA0005E6F2B /* Smaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smaller.swift; sourceTree = "<group>"; };
+		343A67B2272C0DAE005E6F2B /* Arbitrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arbitrary.swift; sourceTree = "<group>"; };
 		343D92272728203B009D285A /* xxRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xxRegion.swift; sourceTree = "<group>"; };
 		343D922F2728219B009D285A /* CHAPTER 03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CHAPTER 03"; sourceTree = BUILT_PRODUCTS_DIR; };
 		343D92312728219B009D285A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				345463DF272AD2690014083B /* main.swift */,
+				343A67AB272C0DA0005E6F2B /* Smaller.swift */,
+				343A67B2272C0DAE005E6F2B /* Arbitrary.swift */,
 			);
 			path = "CHAPTER 06";
 			sourceTree = "<group>";
@@ -347,6 +353,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343A67AC272C0DA0005E6F2B /* Smaller.swift in Sources */,
+				343A67B3272C0DAE005E6F2B /* Arbitrary.swift in Sources */,
 				345463E0272AD2690014083B /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
