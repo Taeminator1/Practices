@@ -11,16 +11,34 @@ import Foundation
 // - indirect 키워드를 사용하여 재귀적으로 정의 가능
 indirect enum BinarySearchTree<T: Comparable> {
     case Leaf
-    case Node(BinarySearchTree<T>, T, BinarySearchTree<T>)
+    case Node(left: BinarySearchTree<T>, value: T, right: BinarySearchTree<T>)
 }
 
 extension BinarySearchTree {
-    init(_ value: T) {
-        self = .Node(.Leaf, value, .Leaf)
-    }
-    
     init() {
         self = .Leaf
+    }
+    
+    init(left: BinarySearchTree<T> = .Leaf, value: T, right: BinarySearchTree<T> = .Leaf) {
+        switch left {
+        case .Leaf:
+            break
+        case let .Node(_, leftValue, _):
+            if leftValue >= value {
+                fatalError()
+            }
+        }
+        
+        switch right {
+        case .Leaf:
+            break
+        case let .Node(_, rightValue, _):
+            if value >= rightValue {
+                fatalError()
+            }
+        }
+        
+        self = .Node(left: left, value: value, right: right)
     }
 }
 
