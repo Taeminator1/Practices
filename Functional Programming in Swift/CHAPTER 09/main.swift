@@ -23,3 +23,18 @@ let empty: BinarySearchTree<Int> = .Leaf
 print(six.isEmpty)
 print(five.isEmpty)
 print(empty.isEmpty)
+
+//var arr: [Int] = []
+//arr.contains(<#T##element: Int##Int#>)
+//arr.insert(<#T##newElement: Int##Int#>, at: <#T##Int#>)
+
+print()
+
+print(six.contains(5))
+print(six.contains(6))
+print(six.contains(7))
+
+print(five.contains(4))
+print(five.contains(5))
+print(five.contains(6))
+

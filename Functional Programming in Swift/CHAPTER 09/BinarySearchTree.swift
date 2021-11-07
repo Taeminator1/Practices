@@ -68,3 +68,23 @@ extension BinarySearchTree {
         return false
     }
 }
+
+extension BinarySearchTree {
+    mutating func insert(_ newElement: T) {
+    }
+    
+    func contains(_ element: T) -> Bool {
+        switch self {
+        case .Leaf:
+            return false
+        case let .Node(_, value, _) where element == value:
+            return true
+        case let .Node(left, value, _) where element < value:
+            return left.contains(element)
+        case let .Node(_, value, right) where element > value:
+            return right.contains(element)
+        default:
+            fatalError("abc")
+        }
+    }
+}
