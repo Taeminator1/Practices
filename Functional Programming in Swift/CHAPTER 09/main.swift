@@ -8,11 +8,11 @@
 import Foundation
 
 //let five: BinarySearchTree<Int> = .Node(.Leaf, 5, .Leaf)
-let five = BinarySearchTree<Int>(value: 5)
+var five = BinarySearchTree<Int>(value: 5)
 print(five.count)
 
 //let six: BinarySearchTree<Int> = .Node(.Leaf, 6, five)
-let six = BinarySearchTree<Int>(left: five, value: 6)
+var six = BinarySearchTree<Int>(left: five, value: 6)
 print(six.count)
 
 
@@ -38,3 +38,12 @@ print(five.contains(4))
 print(five.contains(5))
 print(five.contains(6))
 
+print()
+
+six.insert(3)
+six.insert(9)
+six.insert(8)
+six.insert(1)
+
+print(six.inorderElements)
+print(five.inorderElements)

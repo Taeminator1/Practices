@@ -71,6 +71,17 @@ extension BinarySearchTree {
 
 extension BinarySearchTree {
     mutating func insert(_ newElement: T) {
+        switch self {
+        case .Leaf:
+            self = BinarySearchTree(value: newElement)
+        case .Node(var left, let value, var right):
+            guard newElement != value else {
+                break
+            }
+            
+            newElement < value ? left.insert(newElement) : right.insert(newElement)
+            self = BinarySearchTree(left: left, value: value, right: right)
+        }
     }
     
     func contains(_ element: T) -> Bool {
