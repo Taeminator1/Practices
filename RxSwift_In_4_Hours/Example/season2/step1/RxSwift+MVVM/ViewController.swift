@@ -32,6 +32,17 @@ class ViewController: UIViewController {
         })
     }
 
+    func downloadJson(_ url: String, _ completion: @escaping (String?) -> Void) {
+        DispatchQueue.global().async {
+            let url = URL(string: MEMBER_LIST_URL)!
+            let data = try! Data(contentsOf: url)
+            let json = String(data: data, encoding: .utf8)
+            DispatchQueue.main.async {
+                completion(json)
+            }
+        }
+    }
+    
     // MARK: SYNC
 
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -40,15 +51,9 @@ class ViewController: UIViewController {
         self.editView.text = ""
         self.setVisibleWithAnimation(self.activityIndicator, true)
         
-        DispatchQueue.global().async {
-            let url = URL(string: MEMBER_LIST_URL)!
-            let data = try! Data(contentsOf: url)
-            let json = String(data: data, encoding: .utf8)
-            
-            DispatchQueue.main.async {          // UI 관련 처리는 main thread에서 처리해야 함
-                self.editView.text = json
-                self.setVisibleWithAnimation(self.activityIndicator, false)
-            }
+        downloadJson(MEMBER_LIST_URL) { json in
+            self.editView.text = json
+            self.setVisibleWithAnimation(self.activityIndicator, false)
         }
     }
 }
