@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     }
 
     func downloadJson(_ url: String) -> Observable<String?> {
+        // 1. 비동기로 생기는 데이터를 Observable로 감싸서 리턴하는 방법
         return Observable.create { f in
             DispatchQueue.global().async {
                 let url = URL(string: MEMBER_LIST_URL)!
@@ -53,6 +54,8 @@ class ViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     f.onNext(json)
+                    f.onCompleted()             // 클로저를 사라지게 하여 순환참조 문제를 일으키지 않을 수 있다.
+                                                // Debug Memory Graph에서 확인 가능
                 }
             }
             
@@ -68,6 +71,7 @@ class ViewController: UIViewController {
         editView.text = ""
         setVisibleWithAnimation(activityIndicator, true)
 
+        // 2. Observable로 오는 데이터를 받아서 처리하는 방법
         _ = downloadJson(MEMBER_LIST_URL)
             .subscribe { event in
                 switch event {
@@ -79,7 +83,6 @@ class ViewController: UIViewController {
                 case .error:
                     break
                 }
-                
             }
     }
 }
