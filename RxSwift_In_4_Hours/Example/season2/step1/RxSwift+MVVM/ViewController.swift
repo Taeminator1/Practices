@@ -37,14 +37,18 @@ class ViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     @IBAction func onLoad() {
-        editView.text = ""
-        setVisibleWithAnimation(activityIndicator, true)
-
-        let url = URL(string: MEMBER_LIST_URL)!
-        let data = try! Data(contentsOf: url)
-        let json = String(data: data, encoding: .utf8)
-        self.editView.text = json
+        self.editView.text = ""
+        self.setVisibleWithAnimation(self.activityIndicator, true)
         
-        self.setVisibleWithAnimation(self.activityIndicator, false)
+        DispatchQueue.global().async {
+            let url = URL(string: MEMBER_LIST_URL)!
+            let data = try! Data(contentsOf: url)
+            let json = String(data: data, encoding: .utf8)
+            
+            DispatchQueue.main.async {          // UI 관련 처리는 main thread에서 처리해야 함
+                self.editView.text = json
+                self.setVisibleWithAnimation(self.activityIndicator, false)
+            }
+        }
     }
 }
