@@ -10,7 +10,9 @@ import RxSwift
 import SwiftyJSON
 import UIKit
 
-let MEMBER_LIST_URL = "https://my.api.mockaroo.com/members_with_avatar.json?key=44ce18f0"
+//let MEMBER_LIST_URL = "https://my.api.mockaroo.com/members_with_avatar.json?key=44ce18f0"
+let MEMBER_LIST_URL = "https://reqres.in/api/products/3"
+
 
 class 나중에생기는데이터<T> {
     private let task: (@escaping (T) -> Void) -> Void
@@ -43,23 +45,30 @@ class ViewController: UIViewController {
             self?.view.layoutIfNeeded()
         })
     }
-
+    
     func downloadJson(_ url: String) -> Observable<String?> {
         // 1. 비동기로 생기는 데이터를 Observable로 감싸서 리턴하는 방법
-        return Observable.create { f in
-            DispatchQueue.global().async {
-                let url = URL(string: MEMBER_LIST_URL)!
-                let data = try! Data(contentsOf: url)
-                let json = String(data: data, encoding: .utf8)
-                
-                DispatchQueue.main.async {
-                    f.onNext(json)
-                    f.onCompleted()             // 클로저를 사라지게 하여 순환참조 문제를 일으키지 않을 수 있다.
-                                                // Debug Memory Graph에서 확인 가능
+        
+        return Observable.create { emitter in
+            let url = URL(string: url)!
+            let task = URLSession.shared.dataTask(with: url) { (data, _, err) in
+                guard err == nil else {
+                    emitter.onError(err!)
+                    return
                 }
+                
+                if let dat = data, let json = String(data: dat, encoding: .utf8) {
+                    emitter.onNext(json)
+                }
+                
+                emitter.onCompleted()
             }
             
-            return Disposables.create()
+            task.resume()
+            
+            return Disposables.create() {
+                task.cancel()
+            }
         }
     }
     
@@ -76,8 +85,10 @@ class ViewController: UIViewController {
             .subscribe { event in
                 switch event {
                 case .next(let json):
-                    self.editView.text = json
-                    self.setVisibleWithAnimation(self.activityIndicator, false)
+                    DispatchQueue.main.async {
+                        self.editView.text = json
+                        self.setVisibleWithAnimation(self.activityIndicator, false)
+                    }
                 case .completed:
                     break
                 case .error:
