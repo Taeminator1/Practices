@@ -5,7 +5,7 @@
 import Foundation
 
 //: ### CHAPTER 18 상속
-/*: 329p
+/*: 329 p
  
  매개변수와 반환 타입에 따라 다른 함수로 취급하는지 확인:
  * 함수는 parameter들의 이름과 유무로 구별 됨

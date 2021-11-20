@@ -5,7 +5,7 @@
 import Foundation
 
 //: ### CHAPTER 15 맵, 필터, 리듀스
-/*: 295p
+/*: 295 p
  
  매개변수에 따른 reduce 함수 차이 확인:
  

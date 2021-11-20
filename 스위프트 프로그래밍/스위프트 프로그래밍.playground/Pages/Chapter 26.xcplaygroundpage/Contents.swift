@@ -5,7 +5,7 @@
 import Foundation
 
 //: ### CHAPTER 25 패턴
-/*: 470p
+/*: 470 p
  
  where 절을 활용한 제니릭 타입의 연관 타입 제약을 추가하는 방법
  * 제네릭 타입을 특정 Protocol을 따르도록 하고 싶을 때는 ":" 사용

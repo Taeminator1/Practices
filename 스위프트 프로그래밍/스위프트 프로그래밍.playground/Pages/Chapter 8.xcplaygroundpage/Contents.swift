@@ -5,7 +5,7 @@
 import Foundation
 
 //: ### CHAPTER 8 옵셔널
-/*: 173p
+/*: 173 p
  
  원시 값(rawValue)을 통해 enum type에 대한 객체를 생성할 때, 해당 객체가 어떤 타입으로 선언 되는지 확인
  * 고윳값을 통해 인스턴스를 생성할 때는 Type Name으로 선언된다.
