@@ -14,6 +14,12 @@
 		349876A827410F45000FA6C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349876A627410F45000FA6C0 /* Main.storyboard */; };
 		349876AA27410F48000FA6C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349876A927410F48000FA6C0 /* Assets.xcassets */; };
 		349876AD27410F48000FA6C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349876AB27410F48000FA6C0 /* LaunchScreen.storyboard */; };
+		34BF72AF2746679000F4098B /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF72AE2746679000F4098B /* ViewController3.swift */; };
+		34BF72B327466ECD00F4098B /* SecondViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF72B227466ECD00F4098B /* SecondViewController3.swift */; };
+		34BF72B7274670A200F4098B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BF72B6274670A200F4098B /* ViewController2.swift */; };
+		34D811FF274BB98F00EF29FF /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D811FE274BB98F00EF29FF /* ViewController4.swift */; };
+		34D81203274BBB7800EF29FF /* NewSegue5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D81202274BBB7800EF29FF /* NewSegue5.swift */; };
+		34D81208274BBCE800EF29FF /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D81207274BBCE800EF29FF /* ViewController5.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		349876A927410F48000FA6C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		349876AC27410F48000FA6C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		349876AE27410F48000FA6C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34BF72AE2746679000F4098B /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		34BF72B227466ECD00F4098B /* SecondViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController3.swift; sourceTree = "<group>"; };
+		34BF72B6274670A200F4098B /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		34D811FE274BB98F00EF29FF /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		34D81202274BBB7800EF29FF /* NewSegue5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSegue5.swift; sourceTree = "<group>"; };
+		34D81207274BBCE800EF29FF /* ViewController5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +74,12 @@
 				349876A227410F45000FA6C0 /* SceneDelegate.swift */,
 				349876A427410F45000FA6C0 /* ViewController.swift */,
 				3422CAFD2743DE1F0057A0C6 /* SecondViewController.swift */,
+				34BF72B6274670A200F4098B /* ViewController2.swift */,
+				34BF72AE2746679000F4098B /* ViewController3.swift */,
+				34BF72B227466ECD00F4098B /* SecondViewController3.swift */,
+				34D811FE274BB98F00EF29FF /* ViewController4.swift */,
+				34D81207274BBCE800EF29FF /* ViewController5.swift */,
+				34D81202274BBB7800EF29FF /* NewSegue5.swift */,
 				349876A627410F45000FA6C0 /* Main.storyboard */,
 				349876A927410F48000FA6C0 /* Assets.xcassets */,
 				349876AB27410F48000FA6C0 /* LaunchScreen.storyboard */,
@@ -140,10 +158,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34BF72B7274670A200F4098B /* ViewController2.swift in Sources */,
+				34BF72AF2746679000F4098B /* ViewController3.swift in Sources */,
 				3422CAFE2743DE1F0057A0C6 /* SecondViewController.swift in Sources */,
+				34D811FF274BB98F00EF29FF /* ViewController4.swift in Sources */,
+				34D81208274BBCE800EF29FF /* ViewController5.swift in Sources */,
 				349876A527410F45000FA6C0 /* ViewController.swift in Sources */,
 				349876A127410F45000FA6C0 /* AppDelegate.swift in Sources */,
+				34D81203274BBB7800EF29FF /* NewSegue5.swift in Sources */,
 				349876A327410F45000FA6C0 /* SceneDelegate.swift in Sources */,
+				34BF72B327466ECD00F4098B /* SecondViewController3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
