@@ -7,15 +7,12 @@
 
 import UIKit
 
+// MARK:- 4.5.1 액션 세그웨이
 class ViewController2: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func unwind(_ segue: UIStoryboardSegue) {
-        
     }
 }
