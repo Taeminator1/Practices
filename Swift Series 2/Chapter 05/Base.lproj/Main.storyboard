@@ -84,6 +84,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit2"/>
                                 <connections>
+                                    <action selector="onSubmit2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hbD-az-fJQ"/>
                                     <segue destination="oYX-qY-jer" kind="show" identifier="Submit2" id="uJN-il-e36"/>
                                 </connections>
                             </button>

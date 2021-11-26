@@ -61,5 +61,24 @@ class Ch5_ViewController: UIViewController {
         vc.paramUpdate = self.isUpdate.isOn
         vc.paramInterval = self.interval.value
     }
+    
+    // MARK:- 5.3.2 저장소를 사용하여 값을 주고 받기
+    @IBAction func onSubmit2(_ sender: Any) {
+        // AppDelegate의 인스턴스를 참조하는 방법
+        // - AppDelegate는 앱 전체를 통틀어 하나의 인스턴스만 존재하도록 보장하는 싱글톤이다.
+        // - 따라서 AppDelegate 클래스의 인스턴스는 직접 생성할 수 없고,
+        // - UIApplication.shared.delegate 구문을 통해 생성되어 있는 인스턴스를 참조해야 한다.
+        _ = UIApplication.shared.delegate as? AppDelegate
+        
+        // UserDefaults 객체를 사용하여 값 저장
+        let ud = UserDefaults.standard
+        
+        // 값 저장
+        ud.set(self.email.text, forKey: "email")
+        
+        // 값 조회
+        ud.string(forKey: "email")
+        
+    }
 }
 
