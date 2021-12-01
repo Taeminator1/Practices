@@ -78,6 +78,10 @@ extension AppDelegate {
             print(userInfo["name"] ?? "")
         }
         
+        if response.notification.request.identifier == "alram" {
+            print("alram")
+        }
+        
         completionHandler()
     }
 }
