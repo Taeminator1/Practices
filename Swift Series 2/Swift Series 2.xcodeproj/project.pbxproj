@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		3402EAAE27539D9C0012A2E4 /* Ch6_ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3402EAAD27539D9C0012A2E4 /* Ch6_ViewController2.swift */; };
 		3422CAFE2743DE1F0057A0C6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3422CAFD2743DE1F0057A0C6 /* SecondViewController.swift */; };
+		3426282F2758CE5F0065090D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3426282E2758CE5F0065090D /* AppDelegate.swift */; };
+		342628312758CE5F0065090D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342628302758CE5F0065090D /* SceneDelegate.swift */; };
+		342628332758CE5F0065090D /* Ch7_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342628322758CE5F0065090D /* Ch7_ViewController.swift */; };
+		342628362758CE5F0065090D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 342628342758CE5F0065090D /* Main.storyboard */; };
+		342628382758CE600065090D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342628372758CE600065090D /* Assets.xcassets */; };
+		3426283B2758CE600065090D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 342628392758CE600065090D /* LaunchScreen.storyboard */; };
 		344F2682274D099000EEDF2C /* Ch5_SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344F2681274D099000EEDF2C /* Ch5_SecondViewController.swift */; };
 		3468BC21274CFE59007BC182 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3468BC20274CFE58007BC182 /* AppDelegate.swift */; };
 		3468BC23274CFE59007BC182 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3468BC22274CFE59007BC182 /* SceneDelegate.swift */; };
@@ -39,6 +45,14 @@
 /* Begin PBXFileReference section */
 		3402EAAD27539D9C0012A2E4 /* Ch6_ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch6_ViewController2.swift; sourceTree = "<group>"; };
 		3422CAFD2743DE1F0057A0C6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3426282C2758CE5F0065090D /* Chapter 07.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chapter 07.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3426282E2758CE5F0065090D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		342628302758CE5F0065090D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		342628322758CE5F0065090D /* Ch7_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch7_ViewController.swift; sourceTree = "<group>"; };
+		342628352758CE5F0065090D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		342628372758CE600065090D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3426283A2758CE600065090D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3426283C2758CE600065090D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344F2681274D099000EEDF2C /* Ch5_SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5_SecondViewController.swift; sourceTree = "<group>"; };
 		3468BC1E274CFE58007BC182 /* Chapter 05.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chapter 05.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3468BC20274CFE58007BC182 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +87,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		342628292758CE5F0065090D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3468BC1B274CFE58007BC182 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,6 +118,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3426282D2758CE5F0065090D /* Chapter 07 */ = {
+			isa = PBXGroup;
+			children = (
+				3426282E2758CE5F0065090D /* AppDelegate.swift */,
+				342628302758CE5F0065090D /* SceneDelegate.swift */,
+				342628322758CE5F0065090D /* Ch7_ViewController.swift */,
+				342628342758CE5F0065090D /* Main.storyboard */,
+				342628372758CE600065090D /* Assets.xcassets */,
+				342628392758CE600065090D /* LaunchScreen.storyboard */,
+				3426283C2758CE600065090D /* Info.plist */,
+			);
+			path = "Chapter 07";
+			sourceTree = "<group>";
+		};
 		3468BC1F274CFE58007BC182 /* Chapter 05 */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +153,7 @@
 				3498769F27410F45000FA6C0 /* Chapter 04 */,
 				3468BC1F274CFE58007BC182 /* Chapter 05 */,
 				34A8F4AF2750EC3A004E1421 /* Chapter 06 */,
+				3426282D2758CE5F0065090D /* Chapter 07 */,
 				3498766927410913000FA6C0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,6 +164,7 @@
 				3498769E27410F45000FA6C0 /* Chapter 04.app */,
 				3468BC1E274CFE58007BC182 /* Chapter 05.app */,
 				34A8F4AE2750EC3A004E1421 /* Chapter 06.app */,
+				3426282C2758CE5F0065090D /* Chapter 07.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +208,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3426282B2758CE5F0065090D /* Chapter 07 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3426283F2758CE600065090D /* Build configuration list for PBXNativeTarget "Chapter 07" */;
+			buildPhases = (
+				342628282758CE5F0065090D /* Sources */,
+				342628292758CE5F0065090D /* Frameworks */,
+				3426282A2758CE5F0065090D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Chapter 07";
+			productName = "Chapter 07";
+			productReference = 3426282C2758CE5F0065090D /* Chapter 07.app */;
+			productType = "com.apple.product-type.application";
+		};
 		3468BC1D274CFE58007BC182 /* Chapter 05 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3468BC31274CFE5A007BC182 /* Build configuration list for PBXNativeTarget "Chapter 05" */;
@@ -231,6 +285,9 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					3426282B2758CE5F0065090D = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					3468BC1D274CFE58007BC182 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -258,11 +315,22 @@
 				3498769D27410F45000FA6C0 /* Chapter 04 */,
 				3468BC1D274CFE58007BC182 /* Chapter 05 */,
 				34A8F4AD2750EC3A004E1421 /* Chapter 06 */,
+				3426282B2758CE5F0065090D /* Chapter 07 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3426282A2758CE5F0065090D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3426283B2758CE600065090D /* LaunchScreen.storyboard in Resources */,
+				342628382758CE600065090D /* Assets.xcassets in Resources */,
+				342628362758CE5F0065090D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3468BC1C274CFE58007BC182 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,6 +364,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		342628282758CE5F0065090D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				342628332758CE5F0065090D /* Ch7_ViewController.swift in Sources */,
+				3426282F2758CE5F0065090D /* AppDelegate.swift in Sources */,
+				342628312758CE5F0065090D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3468BC1A274CFE58007BC182 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,6 +416,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		342628342758CE5F0065090D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				342628352758CE5F0065090D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		342628392758CE600065090D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3426283A2758CE600065090D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		3468BC26274CFE59007BC182 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -389,6 +483,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3426283D2758CE600065090D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LGU69RG34G;
+				INFOPLIST_FILE = "Chapter 07/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Taeminator.Chapter-07";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3426283E2758CE600065090D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LGU69RG34G;
+				INFOPLIST_FILE = "Chapter 07/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Taeminator.Chapter-07";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3468BC2F274CFE5A007BC182 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -622,6 +754,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3426283F2758CE600065090D /* Build configuration list for PBXNativeTarget "Chapter 07" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3426283D2758CE600065090D /* Debug */,
+				3426283E2758CE600065090D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3468BC31274CFE5A007BC182 /* Build configuration list for PBXNativeTarget "Chapter 05" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
