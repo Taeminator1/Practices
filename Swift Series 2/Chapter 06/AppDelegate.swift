@@ -57,7 +57,7 @@ extension AppDelegate {
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        print("1")
+        print(NSLocalizedString("1", comment: ""))
         
         if notification.request.identifier == "wakeup" {
             let userInfo = notification.request.content.userInfo
