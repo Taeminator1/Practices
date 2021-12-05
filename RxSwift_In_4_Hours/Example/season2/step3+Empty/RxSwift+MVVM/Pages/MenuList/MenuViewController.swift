@@ -7,14 +7,31 @@
 //
 
 import UIKit
+import RxSwift
 
 class MenuViewController: UIViewController {
     // MARK: - Life Cycle
     
     let viewModel = MenuListViewModel()
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 원하는 데이터를 subscribe
+        viewModel.itemsCount
+            .map { "\($0)"}
+            .subscribe(onNext: { [weak self] in
+                self?.itemCountLabel.text = $0
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.totalPrice
+            .map { $0.currencyKR() }
+            .subscribe(onNext: { [weak self] in
+                self?.totalPrice.text = $0
+            })
+            .disposed(by: disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,7 +61,10 @@ class MenuViewController: UIViewController {
     @IBAction func onOrder(_ sender: UIButton) {
         // TODO: no selection
         // showAlert("Order Fail", "No Orders")
-        performSegue(withIdentifier: "OrderViewController", sender: nil)
+        //        performSegue(withIdentifier: "OrderViewController", sender: nil)
+        
+        viewModel.itemsCount.onNext(viewModel.menus.reduce(0) { $0 + $1.count })
+        viewModel.totalPrice.onNext(viewModel.menus.reduce(0) { $0 + $1.price * $1.count })
     }
 }
 
