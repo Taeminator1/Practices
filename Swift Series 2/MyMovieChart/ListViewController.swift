@@ -7,11 +7,23 @@
 
 import UIKit
 
+// UITableViewcontroller 클래스는 UIViewController 클래스를 상속 받으며,
+// UITableViewDelegate와 UITableViewDataSource 프로토콜을 따른다.
+// - UITableViewDelegate: 사용자 액션 처리를 위한 Delegate
+// - UITableViewDataSource: 데이터 소스를 연동하기 위한 Delegate
 class ListViewController: UITableViewController {
 
+    var dataset: [(String, String, String, Double)] = [
+        ("다크나이트", "영웅물에 철할에 음악까지 더해져 예술이 되다.", "2008-09-04", 8.95),
+        ("호우시절", "때를 알고 내리는 좋은 비", "2009-10-08", 7.31),
+        ("말할 수 없는 비밀", "여기서 너까지 다섯 걸음", "2015-05-07", 9.19),
+    ]
+    
+    lazy var movieList: [MovieVO] = dataset.map { MovieVO($0) }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -21,26 +33,30 @@ class ListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
     */
 
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return self.movieList.count
+    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
+
+        // Configure the cell...
+        let row = self.movieList[indexPath.row]
+
+        cell.textLabel?.text = row.title
+        return cell
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -85,5 +101,10 @@ class ListViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK:- Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        NSLog("선택된 행은 \(indexPath.row) 번째 행입니다.")
+    }
 }
