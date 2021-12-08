@@ -54,6 +54,8 @@ class ListViewController: UITableViewController {
         let row = self.movieList[indexPath.row]
 
         cell.textLabel?.text = row.title
+        cell.detailTextLabel?.text = row.description
+        
         return cell
     }
     
