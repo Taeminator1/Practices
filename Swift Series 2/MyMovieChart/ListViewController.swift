@@ -13,10 +13,10 @@ import UIKit
 // - UITableViewDataSource: 데이터 소스를 연동하기 위한 Delegate
 class ListViewController: UITableViewController {
 
-    var dataset: [(String, String, String, Double)] = [
-        ("다크나이트", "영웅물에 철할에 음악까지 더해져 예술이 되다.", "2008-09-04", 8.95),
-        ("호우시절", "때를 알고 내리는 좋은 비", "2009-10-08", 7.31),
-        ("말할 수 없는 비밀", "여기서 너까지 다섯 걸음", "2015-05-07", 9.19),
+    var dataset: [(String, String, String, String, Double)] = [
+        ("a.jpg", "다크나이트", "영웅물에 철할에 음악까지 더해져 예술이 되다.", "2008-09-04", 8.95),
+        ("b.jpg", "호우시절", "때를 알고 내리는 좋은 비", "2009-10-08", 7.31),
+        ("c.jpg", "말할 수 없는 비밀", "여기서 너까지 다섯 걸음", "2015-05-07", 9.19),
     ]
     
     lazy var movieList: [MovieVO] = dataset.map { MovieVO($0) }
@@ -24,6 +24,7 @@ class ListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        tableView.rowHeight = 80
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,13 +49,17 @@ class ListViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
+        // "ListCell"을 MovieCell 클래스와 연결해 줬으므로, 타입 캐스팅 필요
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! MovieCell
 
         // Configure the cell...
         let row = self.movieList[indexPath.row]
 
-        cell.textLabel?.text = row.title
-        cell.detailTextLabel?.text = row.description
+        cell.thumbnail.image = UIImage(named: row.thumbnail!)
+        cell.title?.text = row.title
+        cell.desc?.text = row.description
+        cell.openDate?.text = row.openDate
+        cell.rating?.text = "\(row.rating!)"
         
         return cell
     }
