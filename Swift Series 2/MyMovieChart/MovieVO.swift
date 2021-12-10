@@ -16,12 +16,4 @@ class MovieVO {
     var detail: String?             // 상세 정보
     var openDate: String?           // 개봉일
     var rating: Double?             // 평점
-    
-    init(_ info: (thumbnail: String, title: String, description: String, openDate: String, rating: Double)) {
-        self.thumbnail = info.thumbnail
-        self.title = info.title
-        self.description = info.description
-        self.openDate = info.openDate
-        self.rating = info.rating
-    }
 }

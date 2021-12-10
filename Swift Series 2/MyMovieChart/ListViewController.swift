@@ -12,19 +12,47 @@ import UIKit
 // - UITableViewDelegate: 사용자 액션 처리를 위한 Delegate
 // - UITableViewDataSource: 데이터 소스를 연동하기 위한 Delegate
 class ListViewController: UITableViewController {
-
-    var dataset: [(String, String, String, String, Double)] = [
-        ("a.jpg", "다크나이트", "영웅물에 철할에 음악까지 더해져 예술이 되다.", "2008-09-04", 8.95),
-        ("b.jpg", "호우시절", "때를 알고 내리는 좋은 비", "2009-10-08", 7.31),
-        ("c.jpg", "말할 수 없는 비밀", "여기서 너까지 다섯 걸음", "2015-05-07", 9.19),
-    ]
     
-    lazy var movieList: [MovieVO] = dataset.map { MovieVO($0) }
+    lazy var movieList: [MovieVO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.rowHeight = 80
+        // 1. 호핀 API 호출을 위한 URI 생성
+        let url = "http://115.68.183.178:2029/hoppin/movies?version=1&page=1&count=10&genreId=&order=releasedateasc"
+        let apiURI: URL! = URL(string: url)
+        
+        // 2. REST API 호출
+        let apiData = try! Data(contentsOf: apiURI)
+        
+//        // 3. 데이터 전송 결과를 로그로 출력
+//        print("API Result = \n\(NSString(data: apiData, encoding: String.Encoding.utf8.rawValue) ?? "")")
+        
+        // 4. JSON 객체를 파싱하여 NSDictionary 객체로 받음
+        do {
+            let apiDictionary = try JSONSerialization.jsonObject(with: apiData, options: []) as! NSDictionary
+            
+            let hoppin = apiDictionary["hoppin"] as! NSDictionary
+            let movies = hoppin["movies"] as! NSDictionary
+            let movie = movies["movie"] as! NSArray
+            
+            for row in movie {
+                let r = row as! NSDictionary
+                
+                let mvo = MovieVO()
+                
+                mvo.thumbnail = r["thumbnailImage"] as? String
+                mvo.title = r["title"] as? String
+                mvo.description = r["genreNames"] as? String
+                mvo.detail = r["linkUrl"] as? String
+                mvo.rating = ((r["ratingAverage"] as! NSString).doubleValue)
+                
+                self.movieList.append(mvo)
+            }
+        } catch {
+            print("Error")
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -54,8 +82,9 @@ class ListViewController: UITableViewController {
 
         // Configure the cell...
         let row = self.movieList[indexPath.row]
-
-        cell.thumbnail.image = UIImage(named: row.thumbnail!)
+        
+        cell.thumbnail.image = UIImage(data: try! Data(contentsOf: URL(string: row.thumbnail!)!))
+        
         cell.title?.text = row.title
         cell.desc?.text = row.description
         cell.openDate?.text = row.openDate
