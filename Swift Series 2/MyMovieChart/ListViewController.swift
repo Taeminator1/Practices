@@ -15,18 +15,39 @@ class ListViewController: UITableViewController {
     
     lazy var movieList: [MovieVO] = []
     
+    @IBOutlet var moreButton: UIButton!
+    var page: Int = 1               // 현재까지 읽어온 API 데이터의 페이지 정보
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        callMovieAPI()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    @IBAction func more(_ sender: Any) {
+        self.page += 1
+        
+        callMovieAPI()
+        
+        self.tableView.reloadData()
+    }
+    
+    private func callMovieAPI() {
         // 1. 호핀 API 호출을 위한 URI 생성
-        let url = "http://115.68.183.178:2029/hoppin/movies?version=1&page=1&count=10&genreId=&order=releasedateasc"
+        let url = "http://115.68.183.178:2029/hoppin/movies?version=1&page=\(self.page)&count=10&genreId=&order=releasedateasc"
         let apiURI: URL! = URL(string: url)
         
         // 2. REST API 호출
         let apiData = try! Data(contentsOf: apiURI)
         
-//        // 3. 데이터 전송 결과를 로그로 출력
-//        print("API Result = \n\(NSString(data: apiData, encoding: String.Encoding.utf8.rawValue) ?? "")")
+        // 3. 데이터 전송 결과를 로그로 출력
+        print("API Result = \n\(NSString(data: apiData, encoding: String.Encoding.utf8.rawValue) ?? "")")
         
         // 4. JSON 객체를 파싱하여 NSDictionary 객체로 받음
         do {
@@ -49,17 +70,17 @@ class ListViewController: UITableViewController {
                 
                 self.movieList.append(mvo)
             }
+            
+            // 더 보기 버튼 숨길지 결정
+            let totalCount = (hoppin["totalCount"] as? NSString)!.integerValue
+            if self.movieList.count >= totalCount {
+                self.moreButton.isHidden = true
+            }
         } catch {
             print("Error")
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     // MARK: - Table view data source
 
     /*
