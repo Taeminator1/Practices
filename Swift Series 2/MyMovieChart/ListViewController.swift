@@ -68,6 +68,11 @@ class ListViewController: UITableViewController {
                 mvo.detail = r["linkUrl"] as? String
                 mvo.rating = ((r["ratingAverage"] as! NSString).doubleValue)
                 
+                // 웹 상에 있는 이미지를 읽어와 UIImage 객체로 생성
+                // 스크롤을 이동할 때마다 매번,
+                // 이미지를 불러오는 것이 아니라, MovieVO 객체의 변수에 저장
+                mvo.thumbnailImage = UIImage(data: try! Data(contentsOf: URL(string: mvo.thumbnail!)!))
+                
                 self.movieList.append(mvo)
             }
             
@@ -104,7 +109,7 @@ class ListViewController: UITableViewController {
         // Configure the cell...
         let row = self.movieList[indexPath.row]
         
-        cell.thumbnail.image = UIImage(data: try! Data(contentsOf: URL(string: row.thumbnail!)!))
+        cell.thumbnail.image = row.thumbnailImage
         
         cell.title?.text = row.title
         cell.desc?.text = row.description
