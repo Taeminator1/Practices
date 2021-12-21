@@ -86,6 +86,23 @@ class ListViewController: UITableViewController {
         }
     }
     
+    private func getThumbnailImage(_ index: Int) -> UIImage {
+        let mvo = self.movieList[index]
+        
+        // 메모이제이션: 저장된 이미지가 있으면 그것을 반환하고, 없을 경우 내려받아 저장한 후 반환
+        if let savedImage = mvo.thumbnailImage {
+            return savedImage
+        }
+        else {
+            // 웹 상에 있는 이미지를 읽어와 UIImage 객체로 생성
+            // 스크롤을 이동할 때마다 매번,
+            // 이미지를 불러오는 것이 아니라, MovieVO 객체의 변수에 저장
+            mvo.thumbnailImage = UIImage(data: try! Data(contentsOf: URL(string: mvo.thumbnail!)!))
+            return mvo.thumbnailImage!
+        }
+        
+    }
+    
     // MARK: - Table view data source
 
     /*
@@ -109,7 +126,10 @@ class ListViewController: UITableViewController {
         // Configure the cell...
         let row = self.movieList[indexPath.row]
         
-        cell.thumbnail.image = row.thumbnailImage
+        // 비동기 방식으로 섬네일 이미지를 읽어옴
+        DispatchQueue.main.async() {
+            cell.thumbnail.image = self.getThumbnailImage(indexPath.row)
+        }
         
         cell.title?.text = row.title
         cell.desc?.text = row.description
