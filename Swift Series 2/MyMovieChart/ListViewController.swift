@@ -190,3 +190,16 @@ class ListViewController: UITableViewController {
         NSLog("선택된 행은 \(indexPath.row) 번째 행입니다.")
     }
 }
+
+// MARK:- 화면 전환 시 값을 넘겨주기 위한 세그웨이 관련 처리
+extension ListViewController {
+    // 세그웨이에 대한 전처리 메소드: 세그웨이를 통해 화면이 전환될 때 iOS 시스템이 자동으로 호출하는 메소드
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue_detail" {
+            let path = self.tableView.indexPath(for: sender as! MovieCell)
+            
+            let detailVC = segue.destination as? DetailViewController
+            detailVC?.mvo = self.movieList[path!.row]
+        }
+    }
+}
